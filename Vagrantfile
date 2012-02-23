@@ -21,7 +21,7 @@ Vagrant::Config.run do |config|
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   # config.vm.forward_port "http", 80, 8080
-  config.vm.forward_port "http", 80, 80
+  config.vm.forward_port "http", 80, 8081
   config.vm.forward_port "http", 9292, 9292 
 
   # Share an additional folder to the guest VM. The first argument is
