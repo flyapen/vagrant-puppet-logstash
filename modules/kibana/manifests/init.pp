@@ -18,7 +18,7 @@ class kibana($elasticsearch_server ="localhost:9200")
     ensure => present;
   }
 
-  file { '/etc/httpd/conf.d/kibana.conf':
+  file { '/etc/apache2/conf.d/kibana.conf':
     ensure => 'file',
     group  => '0',
     mode   => '644',
@@ -26,14 +26,14 @@ class kibana($elasticsearch_server ="localhost:9200")
     source => 'puppet:///modules/kibana/kibana.conf',
   }
 
-  file { '/var/vhosts/kibana/html/':
+  file { '/var/www/kibana/':
     ensure => 'directory',
     group  => '0',
     mode   => '777',
     owner  => '0',
   }
 
-  file { '/var/vhosts/kibana/html/config.php':
+  file { '/var/www/kibana/config.php':
     ensure   => 'file',
     group    => '0',
     mode     => '664',

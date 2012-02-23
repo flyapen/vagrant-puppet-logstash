@@ -1,10 +1,19 @@
 node "logstash" {
 
   include apt
+
+  exec { "apt-key":
+    command => "/usr/bin/wget -q http://aeolus.ugent.be/debian/aeolus.gpg -O -|/usr/bin/apt-key add -";
+  }
+
   apt::source { "aeolus":
     location => "http://aeolus.ugent.be/debian/",
     release => "squeeze",
     repos => "main"
+  }
+
+  exec { "apt-update":
+    command     => "/usr/bin/apt-get update",
   }
 
   service {"iptables":
@@ -12,23 +21,16 @@ node "logstash" {
     ensure => stopped;
   }
 
-
-
   package { 'openjdk-6-jdk':
     ensure => 'installed';
   }
 
-  package { 'tanukiwrapper':
-    ensure => '3.5.7-1.jpp6',
+  package { 'tanuki':
+    ensure => '3.5.13',
    }
 
-
-
   class {'elasticsearch':
-    version => '0.18.7-1.el6',
-  }
-  package {'elasticsearch-plugin-head':
-    ensure => 'installed',
+    version => '0.18.7',
   }
 
   include rabbitmq
@@ -43,7 +45,7 @@ node "logstash" {
   }
   include logstash::web
 
-  service {"httpd":  ensure => running; }
+  service {"apache2":  ensure => running; }
   include kibana
 
 }

@@ -1,15 +1,15 @@
 [submodule "modules/rabbitmq"]
 	path = modules/rabbitmq
-	url = git://github.com/KrisBuytaert/puppet-rabbitmq.git
+	url = git://github.com/flyapen/puppet-rabbitmq.git
 [submodule "modules/logstash"]
 	path = modules/logstash
-	url = git@github.com:KrisBuytaert/puppet-logstash.git
+	url = git@github.com:flyapen/puppet-logstash.git
 [submodule "modules/elasticsearch"]
 	path = modules/elasticsearch
-	url = git@github.com:KrisBuytaert/puppet-elasticsearch.git
+	url = git@github.com:flyapen/puppet-elasticsearch.git
 [submodule "modules/grok"]
 	path = modules/grok
-	url = git@github.com:KrisBuytaert/puppet-grok.git
-[submodule "manifests/apt"]
-	path = manifests/apt
+	url = git@github.com:flyapen/puppet-grok.git
+[submodule "modules/apt"]
+	path = modules/apt
 	url = git://github.com/evolvingweb/puppet-apt.git
