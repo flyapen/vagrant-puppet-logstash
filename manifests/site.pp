@@ -1,6 +1,7 @@
 node "logstash" {
 
   include apt
+  include apache
 
   exec { "apt-key":
     command => "/usr/bin/wget -q http://aeolus.ugent.be/debian/aeolus.gpg -O -|/usr/bin/apt-key add -";
@@ -16,6 +17,11 @@ node "logstash" {
     command     => "/usr/bin/apt-get update",
   }
 
+  apache::module { "rewrite":
+    ensure => present,
+    require => Package["apache2"];
+  }
+
   service {"iptables":
     enable => false,
     ensure => stopped;
@@ -24,11 +30,7 @@ node "logstash" {
   package { 'openjdk-6-jdk':
     ensure => 'installed';
   }
-
-  package { 'tanuki':
-    ensure => '3.5.13',
-   }
-
+  
   class {'elasticsearch':
     version => '0.18.7',
   }

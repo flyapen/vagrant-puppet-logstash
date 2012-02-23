@@ -18,11 +18,8 @@ class kibana($elasticsearch_server ='localhost:9200')
     ensure => present;
   }
 
-  file { '/etc/apache2/conf.d/kibana.conf':
-    ensure => 'file',
-    group  => '0',
-    mode   => '0644',
-    owner  => '0',
+  apache::vhost { 'kibana':
+    ensure => 'present',
     source => 'puppet:///modules/kibana/kibana.conf',
   }
 
