@@ -21,15 +21,15 @@ Vagrant::Config.run do |config|
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   # config.vm.forward_port "http", 80, 8080
-  config.vm.forward_port "apache", 80, 8888
-  config.vm.forward_port "logstash", 9292, 9292
-  config.vm.forward_port "amqp", 5672, 5672
-  config.vm.forward_port "ssh", 22, 2200
+  config.vm.forward_port 80, 8888
+  config.vm.forward_port 9292, 9292
+  config.vm.forward_port 5672, 5672
+  
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
-#  config.vm.share_folder "src", "/src", "/home/src/git/elasticsearch-rpms"
+  #  config.vm.share_folder "src", "/src", "/home/src/git/elasticsearch-rpms"
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
